@@ -31,7 +31,6 @@ function closeModal (modal) {
     createCloud(mrakObrazokSrc)
     blahFoto.removeAttribute('src')
     blah.classList.remove("active")
-    numImages = numImages+1
 }
 
 function createCloud (pic){
@@ -56,7 +55,7 @@ function createCloud (pic){
     
     obr.setAttribute('src', pic)
     obr.setAttribute('style', 'width: 100%')
-    obr.setAttribute('id', `#${numImages}`)
+    /*obr.setAttribute('id', `#${numImages}`)*/
     obrazok.setAttribute('style', 'position: absolute; left: 50%;transform: translate(-50%,0); bottom:20%; width:30%; border: 3px solid yellow; border-radius:10px; padding: 10px')
     obrazok.appendChild(obr)
     mrak.appendChild(obrazok)
@@ -66,7 +65,7 @@ function createCloud (pic){
     mraky.appendChild(mrak)
     mraky.appendChild(plus)
 
-    localStorage.setItem(`${numImages}`, getBase64Image(document.getElementById(`${numImages}`)))
+    /*localStorage.setItem(`${numImages}`, getBase64Image(document.getElementById(`${numImages}`)))*/
 }
 
 function readURL(input) {
@@ -85,7 +84,7 @@ function readURL(input) {
     }
   }
 
-function getBase64Image(img) {
+/*function getBase64Image(img) {
    var canvas = document.createElement("canvas");
    canvas.width = img.width;
    canvas.height = img.height;
@@ -94,4 +93,4 @@ function getBase64Image(img) {
    var dataURL = canvas.toDataURL("image/png");
 
    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-}
+}*/
