@@ -40,7 +40,7 @@ function createCloud (pic){
     var obr = document.createElement('img')
 
     mrakPozadie.setAttribute('src', 'images/mrak.png')
-    mrakPozadie.setAttribute('width', '700px')
+    mrakPozadie.setAttribute('style', 'width: 700px')
 
     mrak.appendChild(mrakPozadie)
     
