@@ -4,6 +4,7 @@ html, body{
     margin: 0;
     padding: 0;
     background-color: rgb(110, 168, 255);
+    font-family: 'Sansita', cursive;
 }
 #zem {
     margin-bottom:0;
@@ -37,7 +38,7 @@ html, body{
     width: 700px;
     max-width: 80%;
     height: 60%;
-    overflow:auto;
+    overflow-x: hidden;
 }
 .modal.active{
     transform: translate(-50%,-50%) scale(1);
@@ -51,11 +52,13 @@ html, body{
     padding: 10px 15px;
 }
 .modal .header .title {
-    font-size: 1.25rem;
+    font-size: 2rem;
     font-weight: bold;
+    margin-left: 50%;
+    transform: translate(-50%,0);
 }
 
-.modal .header #close-button {
+#close-button {
     cursor: pointer;
     border: none;
     outline: none;
@@ -106,15 +109,76 @@ html, body{
     border-bottom: 1px solid black;
 }
 
-.text{
-    margin-left: 50%;
-    transform: translate(-50%,0);
-    width: 80%;
-    margin-top: 10px;
-    margin-bottom: 10px;
+.modal .text{
+    width: 100%;
+    border-bottom: 1px solid black;
 }
 
-#text{
+.modal #text{
     resize: none;
     width: 100%;
+    margin-left: 50%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    transform: translate(-50%,0);
+    width: 80%;
+}
+
+.vyber-fotku {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(0);
+    transition: 200ms ease-in-out;
+    width: 400px;
+    max-width: 40%;
+    height: 150px;
+    background-color: rgb(255, 203, 203);
+    border: 4px solid rgb(255, 100, 100);
+    border-radius: 10px;
+    z-index: 22;
+}
+.vyber-fotku.active {
+    transform: translate(-50%,-50%) scale(1);
+}
+
+#close {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.overlay2 {
+    position: fixed;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.5);
+    pointer-events: none;
+    z-index: 21;
+}
+.overlay2.active {
+    pointer-events: all;
+    opacity: 1;
+}
+
+#close {
+    margin-left: 100%;
+    transform: translate(-100%,0);
+    margin-top: 0;
+    padding-top: 10px;
+    padding-right: 15px;
+    padding-left: 0;
+}
+.vyber-fotku #text{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%)
 }
