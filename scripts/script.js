@@ -9,9 +9,9 @@ const blahFoto = document.getElementById('blah')
 const send = document.getElementById("send-button")
 const modal = document.querySelector('.modal')
 const Alert = document.querySelector('.vyber-fotku')
+let b = 0
 let numImages = 0
 let mrakObrazokSrc = ""
-let b = 0
 
 function readURL(input) {
     if (input.files && input.files[0]) {
@@ -45,12 +45,14 @@ closeAlert.addEventListener('click', () =>{
 })
 
 send.addEventListener('click', () => {
-    if (document.getElementById('uploadFotky').files.length == 0){
+    if (document.getElementById('uploadFotkyInput').files.length == 0){
         Alert.classList.add('active')
         overlay2.classList.add('active')
     }else{
     createCloud(mrakObrazokSrc)}
 })
+
+
 
 function openModal (modal) {
     if (modal == null) return
@@ -64,15 +66,25 @@ function closeModal () {
     overlay.classList.remove('active')
     blahFoto.removeAttribute('src')
     blah.classList.remove("active")
-    document.getElementById("uploadFotky").value =''
+    document.getElementById("uploadFotkyInput").value =''
+    document.getElementById('textArea').value = ''
 }
 
 function createCloud (pic){
+    numImages = numImages+1
     var mrak = document.createElement('div')
     var mrakPozadie = document.createElement('img')
-    var obrazok = document.createElement('div')
-    var obr = document.createElement('img')
+    var obrazokDiv = document.createElement('div')
+    var obrazokPic = document.createElement('img')
+    var obrazokShadow = document.createElement('div')
     var mraky = document.getElementById("mraky")
+
+    var previewWindow = document.createElement('div')
+    var previewImageDiv = document.createElement('div')
+    var previewImageImg = document.createElement('img')
+    var previewText = document.createElement('div')
+    var previewClose = document.createElement('div')
+
 
     mrakPozadie.setAttribute('src', 'images/mrak.png')
     mrakPozadie.setAttribute('style', 'width: 700px')
@@ -88,16 +100,67 @@ function createCloud (pic){
         b=0
     }
     
-    obr.setAttribute('src', pic)
-    obr.setAttribute('style', 'width: 100%')
-    obrazok.setAttribute('style', 'position: absolute; left: 50%;transform: translate(-50%,0); bottom:20%; width:30%; border: 3px solid yellow; border-radius:10px; padding: 10px')
-    obrazok.appendChild(obr)
-    mrak.appendChild(obrazok)
+    obrazokPic.setAttribute('src', pic)
+    obrazokPic.setAttribute('style', 'width: 100%; z-index:6')
+    obrazokDiv.setAttribute("class", "obrazokDiv")
+    obrazokDiv.id = "obrazok" + numImages
+    obrazokDiv.appendChild(obrazokPic)
+    obrazokShadow.classList.add('obrazokShadow')
+    obrazokDiv.appendChild(obrazokShadow)
+    mrak.appendChild(obrazokDiv)
+ 
 
+ 
     plus = document.getElementById('plus')
     plus.remove()
     mraky.appendChild(mrak)
     mraky.appendChild(plus)
+
+    obrazokShadow.addEventListener('mouseover', function(e){
+        this.classList.add('active')
+    })
+    obrazokShadow.addEventListener('mouseout', function(e){
+        this.classList.remove('active')
+    })
+
+    
+
+
+    previewWindow.classList.add('preview')
+    previewWindow.id = 'preview' + numImages
+    previewImageDiv.classList.add('previewImage')
+
+    previewImageImg.setAttribute('src', pic)
+    previewImageImg.setAttribute('style', 'width: 100%')
+    previewImageDiv.appendChild(previewImageImg)
+    previewWindow.appendChild(previewImageDiv)
+
+    previewText.classList.add('previewText')
+    previewText.textContent = document.getElementById('textArea').value
+    previewWindow.appendChild(previewText)
+
+    document.getElementById('textArea').value = ''
+
+    previewClose.classList.add('previewClose')
+    previewClose.id = 'previewClose' + numImages
+    previewClose.textContent = 'Zatvoriť'
+    previewWindow.appendChild(previewClose)
+
+
+    document.body.appendChild(previewWindow)
+
+ 
+    obrazokDiv.addEventListener('click', function(e){
+        document.getElementById('preview' + this.id.slice(7)).classList.add('active')
+        overlay.classList.add('active')
+    })
+    previewClose.addEventListener('click', function(e){
+        document.getElementById('preview' + this.id.slice(12)).classList.remove('active')
+        overlay.classList.remove('active')
+    })
+
+
     closeModal(document.querySelector('.modal'))
+    
 }
 

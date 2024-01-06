@@ -8,8 +8,7 @@
     <script src="scripts/script.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sansita:wght@800&display=swap" rel="stylesheet">
-      
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="mraky">
@@ -18,27 +17,28 @@
     <img id="zem" src="images/trava.png" alt="zem">
     <div class="modal">
         <div class="header">
-            <div class="title">Vytvoriť mrak</div>
+            <div class="title"><b>Vytvoriť mrak</b></div>
             <button id="close-button">&times;</button>
         </div>
         <form>
             <div class="fotka">
-                <input id="uploadFotky" type="file" onchange="readURL(this);" multiple/>
+                <label for="uploadFotkyInput" id="uploadFotky"><b>Vyber fotku</b></label>
+                <input id="uploadFotkyInput" type="file" onchange="readURL(this);" multiple/>
                 <div class="blah"> 
                     <img id="blah" src="#" alt=""/>
                 </div>
             </div>
             <div class = "text">
-                <textarea id="text" onchange=""></textarea>
+                <textarea id="textArea" onchange=""></textarea>
             </div>
-            <div class="odoslat">
-                <p id="send-button">Pridať mrak</p>
+            <div id="send-button">
+                <b>Pridať mrak</b>
             </div>
         </form>
     </div>
     <div class="vyber-fotku">
         <button id="close">&times;</button>
-        <div id="text">Najprv musíš vybrať fotku</div>
+        <div id="text"><b>Najprv musíš vybrať fotku</b></div>
     </div>
     <div class="overlay"></div>
     <div class="overlay2"></div>
