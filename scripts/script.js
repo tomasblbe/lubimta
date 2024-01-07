@@ -93,18 +93,21 @@ function createCloud (pic){
     
 
     if (b===0){
-        mrak.setAttribute('style', 'position:relative; margin-left: 1020px; width:700px')
+        mrak.setAttribute('style', 'position:relative; margin-left: 1020px; width:700px; height:388.267px')
         b=1
     }else {
-        mrak.setAttribute('style', 'position:relative; margin-left: 80px; width: 700px')
+        mrak.setAttribute('style', 'position:relative; margin-left: 80px; width: 700px; height:388.267px')
         b=0
     }
+
+    
     
     obrazokPic.setAttribute('src', pic)
-    obrazokPic.setAttribute('style', 'width: 100%; z-index:6')
+    obrazokPic.setAttribute('style', 'height: 100%; width: 100%')
     obrazokDiv.setAttribute("class", "obrazokDiv")
     obrazokDiv.id = "obrazok" + numImages
     obrazokDiv.appendChild(obrazokPic)
+    
     obrazokShadow.classList.add('obrazokShadow')
     obrazokDiv.appendChild(obrazokShadow)
     mrak.appendChild(obrazokDiv)
@@ -115,6 +118,13 @@ function createCloud (pic){
     plus.remove()
     mraky.appendChild(mrak)
     mraky.appendChild(plus)
+
+    if (obrazokDiv.offsetHeight>obrazokDiv.offsetWidth){
+        obrazokDiv.style.height = '50%'
+    }else{
+        obrazokDiv.style.width = '50%'
+    }
+    alert(obrazokDiv.offsetHeight)
 
     obrazokShadow.addEventListener('mouseover', function(e){
         this.classList.add('active')

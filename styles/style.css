@@ -226,15 +226,14 @@ html, body{
 }
 
 .obrazokDiv {
-    width: 30%;
     position: absolute;
     left: 50%;
-    transform: translate(-50%,0);
     bottom: 20%;
-    border: 3px solid yellow; 
-    border-radius:10px; 
+    transform: translate(-50%,0);
+    border: 3px solid yellow;
+    border-radius: 10px;
     padding: 10px;
-    background-color: rgba(0,0,0,0.2)
+    background-color: rgba(0,0,0,0.2);
 }
 .obrazokShadow {
     position:absolute;
