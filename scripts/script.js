@@ -12,6 +12,22 @@ const Alert = document.querySelector('.vyber-fotku')
 let b = 0
 let numImages = 0
 let mrakObrazokSrc = ""
+/*
+const indexedDB = window.indexedDB
+const request = indexedDB.open('MracikyDB', 1)
+
+request.onerror = function(event){
+    console.error('Stala sa chyba s IndexedDB')
+    console.error(event)
+}
+request.onupgradeneeded = function(){
+    const db = request.result
+    const store = db.createObjectStore('mraciky', {keyPath: 'id'})
+    store.createIndex('text_mracika', ['text'], {unique: false})
+    store.createIndex('text_plus_obrazok', ['text', 'obrazok'], {unique: false})
+}*/
+
+
 
 function readURL(input) {
     if (input.files && input.files[0]) {
